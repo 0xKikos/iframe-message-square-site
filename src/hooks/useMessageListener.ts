@@ -1,37 +1,22 @@
 import { useEffect, useCallback } from 'react'
-import useUser from '@/store/user'
-
 const mainSiteOrigin = import.meta.env.VITE_MAIN_PATH
 
 
 
-export const useMessageListener = () => {
+export const useMessageListener = ({ onMessage }: { onMessage?: (event: MessageEvent) => void } = {}) => {
 
-  const setToken = useUser((state) => state.setToken)
   const handleMessage = useCallback(
     (event: MessageEvent) => {
       if (event.origin !== mainSiteOrigin) return
       try {
-        console.log('❇️ Square: Message received:', event.data)
-        switch (event.data.type) {
-          case 'COMMONS_INIT':
-            initToken(event.data)
-            break
-          default:
-            console.log('❇️ Square: SquareUnknown message type:', event.data.type)
-        }
+        console.log('❇️ Square: Message Received:', event.data)
+        onMessage?.(event.data);
       } catch (error) {
-        console.error('❇️ Square: Message listener error:', error)
+        console.error('❇️ Square: Message Listener Error:', error)
       }
     },
-    [mainSiteOrigin]
+    [mainSiteOrigin, onMessage]
   )
-
-  const initToken = (data: any) => {
-    console.log("❇️ Square: init token", data);
-    window.localStorage.setItem('square_token', data.data.token)
-    setToken(data.data.token)
-  }
 
 
 

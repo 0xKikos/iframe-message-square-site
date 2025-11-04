@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router'
-import { useMessageListener } from '@/hooks/useMessageListener'
+// import { useMessageListener } from '@/hooks/useMessageListener'
 
 const Layout = () => {
-  useMessageListener()
+  // useMessageListener()
 
   return (
     <div>

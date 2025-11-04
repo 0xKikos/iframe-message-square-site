@@ -11,7 +11,7 @@ export default function AppRouter() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Square />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail />} />
         </Route>
       </Routes>
     </BrowserRouter>
