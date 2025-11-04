@@ -14,7 +14,7 @@ const Detail = () => {
   useMessageListener({
     onMessage: (event) => {
       // console.log("🚀 ~ Detail ~ data:", data)
-      if (event.type === "COMMONS_SQUARE_DETAIL_INIT") {
+      if (event.type === "COMMONS_SQUARE_DETAIL") {
         console.log("data.data", event.data);
       }
     }

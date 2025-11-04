@@ -10,7 +10,7 @@ const Square = () => {
   const handleClick = () => {
 
     sendToParent({
-      type: 'COMMONS_SQUARE_DETAIL',
+      type: 'COMMONS_SQUARE_JOIN_DETAIL',
       data: {
         squareId: "55123"
       }
@@ -19,7 +19,7 @@ const Square = () => {
 
   useMessageListener({
     onMessage: (data) => {
-      if (data.type === "COMMONS_INIT") {
+      if (data.type === "COMMONS_SQUARE_LIST") {
         window.localStorage.setItem('square_token', data.data.token)
         setToken(data.data.token)
       }
